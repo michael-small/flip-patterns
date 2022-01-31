@@ -36,6 +36,54 @@ export class TileGridComponent implements OnInit {
   ngOnInit(): void {}
 
   logTileNum(number: number) {
+    // this.changePatternDetermineOne(number);
+    // this.changePatternRandomeOne(number);
+    this.changePatternRandomTwo();
+  }
+
+  changePatternDetermineOne(number: number) {
     this.tiles[number - 1].toggled = !this.tiles[number - 1].toggled;
+  }
+
+  flipTileX(number: number, offset?: number) {
+    let potentialOffset = 0;
+    if (offset) {
+      potentialOffset = offset;
+    }
+    // prettier-ignore
+    this.tiles[number - 1 + potentialOffset].toggled = !this.tiles[number - 1 + potentialOffset].toggled;
+  }
+
+  step: number = 0;
+  changePatternRandomeOne(number: number) {
+    console.log('step', this.step);
+    console.log('number', number);
+    switch (this.step) {
+      case 0:
+        this.flipTileX(number);
+        break;
+      case 1:
+        this.flipTileX(number, 1);
+        break;
+      case 2:
+        this.flipTileX(number, 3);
+        break;
+      default:
+        this.flipTileX(number, 5);
+        break;
+    }
+    this.step++;
+  }
+
+  changePatternRandomTwo() {
+    let rngNum = Math.floor(Math.random() * (this.tiles.length + 1));
+
+    if (rngNum % this.tiles.length == 0) {
+      rngNum = 1;
+    }
+
+    this.flipTileX(rngNum % 16);
+
+    this.step++;
   }
 }

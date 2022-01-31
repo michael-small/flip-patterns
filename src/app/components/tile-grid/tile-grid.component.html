@@ -1,10 +1,13 @@
-<mat-grid-list cols="{{ cols }}" rowHeight="2:1">
-  <mat-grid-tile
-    *ngFor="let tile of tiles"
-    class="tile"
-    (click)="logTileNum(tile.num)"
-    [ngClass]="{ toggled: tile.toggled }"
-  >
-    <p>{{ tile.num }}</p>
-  </mat-grid-tile>
-</mat-grid-list>
+<div id="wrapper">
+  <mat-grid-list cols="{{ cols }}" rowHeight="1:1">
+    <mat-grid-tile
+      *ngFor="let tile of tiles"
+      class="tile"
+      (click)="logTileNum(tile.num)"
+      [ngClass]="{ toggled: tile.toggled }"
+      colspan="1"
+    >
+      <p>{{ tile.num }}</p>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
