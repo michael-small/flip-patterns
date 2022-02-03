@@ -36,9 +36,9 @@ export class TileGridComponent implements OnInit {
   ngOnInit(): void {}
 
   logTileNum(number: number) {
-    // this.changePatternDetermineOne(number);
+    this.changePatternDetermineOne(number);
     // this.changePatternRandomeOne(number);
-    this.changePatternRandomTwo();
+    // this.changePatternRandomTwo();
   }
 
   changePatternDetermineOne(number: number) {
