@@ -2,8 +2,8 @@
 <p>
   Pattern
   <mat-button-toggle-group name="pattern" aria-label="Pattern">
-    <mat-button-toggle value="rng1">rng1</mat-button-toggle>
-    <mat-button-toggle value="rng2">rng2</mat-button-toggle>
-    <mat-button-toggle value="rng1">det1</mat-button-toggle>
+    <mat-button-toggle (click)="setRNG(0)">Deterministic</mat-button-toggle>
+    <mat-button-toggle (click)="setRNG(1)">Nondeterministic</mat-button-toggle>
+    <mat-button-toggle (click)="setRNG(2)">Random</mat-button-toggle>
   </mat-button-toggle-group>
 </p>

@@ -10,9 +10,11 @@ import { Algorithm } from '../models/algorithm';
 export class RngModelToggleComponent implements OnInit {
   constructor(private algorithmService: AlgorithmService) {}
 
+  currentAlgorithm: Algorithm = { algorithmName: '' };
+
   algorithms: Algorithm[] = [
     { algorithmName: 'det0', deterministic: false },
-    { algorithmName: 'rand0', deterministic: true },
+    { algorithmName: 'nondet0', deterministic: true },
     { algorithmName: 'rand0' },
   ];
 
@@ -20,5 +22,11 @@ export class RngModelToggleComponent implements OnInit {
     for (let alg = 0; alg < this.algorithms.length; alg++) {
       this.algorithmService.getAlgorithm(this.algorithms[alg]);
     }
+  }
+
+  setRNG(rngModel: number) {
+    console.log(rngModel);
+    this.currentAlgorithm = this.algorithms[rngModel];
+    console.log(this.currentAlgorithm);
   }
 }
