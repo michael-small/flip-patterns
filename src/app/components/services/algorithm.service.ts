@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-
-interface Algorithm {
-  deterministic: boolean;
-  algorithmName: string;
-}
+import { Algorithm } from '../models/algorithm';
 
 @Injectable({
   providedIn: 'root',
@@ -11,13 +7,13 @@ interface Algorithm {
 export class AlgorithmService {
   constructor() {}
 
-  getAlgorithm(algorithmName: string, deterministic?: boolean) {
-    if (deterministic) {
-      console.log(algorithmName);
-    } else if (!deterministic) {
-      console.log(algorithmName);
+  getAlgorithm(algorithm: Algorithm) {
+    if (algorithm.deterministic) {
+      console.log(algorithm.algorithmName);
+    } else if (!algorithm.deterministic) {
+      console.log(algorithm.algorithmName);
     } else {
-      console.log(algorithmName);
+      console.log(algorithm.algorithmName);
     }
   }
 }

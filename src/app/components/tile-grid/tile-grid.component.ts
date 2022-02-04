@@ -12,33 +12,23 @@ export interface Tile {
 })
 export class TileGridComponent implements OnInit {
   cols: number = 4;
-  tiles: Tile[] = [
-    { num: 1, toggled: false },
-    { num: 2, toggled: false },
-    { num: 3, toggled: false },
-    { num: 4, toggled: false },
-    { num: 5, toggled: false },
-    { num: 6, toggled: false },
-    { num: 7, toggled: false },
-    { num: 8, toggled: false },
-    { num: 9, toggled: false },
-    { num: 10, toggled: false },
-    { num: 11, toggled: false },
-    { num: 12, toggled: false },
-    { num: 13, toggled: false },
-    { num: 14, toggled: false },
-    { num: 15, toggled: false },
-    { num: 16, toggled: false },
-  ];
+  tiles: Tile[] = [];
+  numTiles: number = 16;
 
   constructor() {}
 
-  ngOnInit(): void {}
+  setNumTiles(numTiles: number) {
+    for (numTiles = 0; numTiles < this.numTiles; numTiles++) {
+      this.tiles[numTiles] = { num: numTiles + 1, toggled: false };
+    }
+  }
+
+  ngOnInit(): void {
+    this.setNumTiles(16);
+  }
 
   logTileNum(number: number) {
     this.changePatternDetermineOne(number);
-    // this.changePatternRandomeOne(number);
-    // this.changePatternRandomTwo();
   }
 
   changePatternDetermineOne(number: number) {

@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlgorithmService } from '../services/algorithm.service';
+import { Algorithm } from '../models/algorithm';
 
-// interface AlgorithmToggle {
-//   algorith
-// }
 @Component({
   selector: 'app-rng-model-toggle',
   templateUrl: './rng-model-toggle.component.html',
@@ -12,9 +10,15 @@ import { AlgorithmService } from '../services/algorithm.service';
 export class RngModelToggleComponent implements OnInit {
   constructor(private algorithmService: AlgorithmService) {}
 
+  algorithms: Algorithm[] = [
+    { algorithmName: 'det0', deterministic: false },
+    { algorithmName: 'rand0', deterministic: true },
+    { algorithmName: 'rand0' },
+  ];
+
   ngOnInit(): void {
-    this.algorithmService.getAlgorithm('any');
-    this.algorithmService.getAlgorithm('det1', true);
-    this.algorithmService.getAlgorithm('rand1', false);
+    for (let alg = 0; alg < this.algorithms.length; alg++) {
+      this.algorithmService.getAlgorithm(this.algorithms[alg]);
+    }
   }
 }
